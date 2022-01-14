@@ -8,7 +8,7 @@ public class SoftGrass extends Location {
 
     public SoftGrass(){
         this.name = "Мягкая трава";
-        joinToTheStory();
+        //joinToTheStory();
     }
 
     @Override
@@ -20,7 +20,7 @@ public class SoftGrass extends Location {
         this.name = name;
     }
     @Override
-    public void surroundingsСhangeStatus(Hero hero) {
+    public void outsideFactorsChangeStatus(Hero hero) {
         hero.setStatus(Status.RESTED);
     }
 
@@ -29,7 +29,7 @@ public class SoftGrass extends Location {
     @Override
     protected void influenceOnHero(Hero hero) {
         System.out.println(hero.getName()+" сидит и отдыхает на мягкой траве");
-        surroundingsСhangeStatus(hero);
+        outsideFactorsChangeStatus(hero);
     }
 
 

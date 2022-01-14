@@ -1,16 +1,63 @@
 package core.locations;
 
-import core.Stick;
-import utility.Hero;
-import utility.Location;
-import utility.Status;
+import utility.*;
 
 public class Anthill extends Location {
     private String name;
 
     public Anthill(){
         this.name = "Муравейник";
-        joinToTheStory();
+        //joinToTheStory();
+    }
+
+    //внутренний класс
+
+    class Ants implements Nameable{
+        private String name;
+        private Amount amount;
+        Ants(){
+            name = "Муравьи";
+            amount = Amount.NotEnough;
+        }
+
+        public Amount getAmount() {
+            return amount;
+        }
+
+        void bite(Hero hero){
+            System.out.println(getName()+" кусают "+hero.getName()+'a');
+        }
+        void becomesMore(){
+            System.out.println("Муравьев все больше");
+            amount = Amount.Enough;
+        }
+        public void setName(String name){
+            this.name = name;
+        }
+        public String getName(){
+            return name;
+        }
+    }
+
+    //анонимный класс
+    @Override
+    protected void influenceOnHero(Hero hero) {
+        Ants ants = new Ants();
+        ants.bite(hero);
+        outsideFactorsChangeStatus(hero);
+
+        hero.reaction(
+                new IPunch() {
+                    @Override
+                    public void punch() {
+                        System.out.println("Герой бьет врагов с помощью палки");
+                    }
+                }
+        );
+
+
+        ants.becomesMore();
+        hero.setStatus(Status.SCARED);
     }
 
     @Override
@@ -22,21 +69,8 @@ public class Anthill extends Location {
         this.name = name;
     }
 
-
-
-
     @Override
-    protected void influenceOnHero(Hero hero) {
-        System.out.println("Муравьи кусают "+hero.getName()+'а');
-        surroundingsСhangeStatus(hero);
-        hero.reaction(new Stick());
-        System.out.println("Муравьев все больше");
-        hero.setStatus(Status.SCARED);
-    }
-
-
-    @Override
-    public void surroundingsСhangeStatus(Hero hero) {
+    public void outsideFactorsChangeStatus(Hero hero) {
         hero.setStatus(Status.ANGRY);
     }
 

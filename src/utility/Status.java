@@ -8,7 +8,9 @@ public enum Status {
     RESTED("Отдохнул"),
     HALLUCINATED("Думает о плохом, нагнетает саспенс"),
     BLEED("Кровоточит"),
-    ANGRY("Разъярен");
+    ANGRY("Разъярен"),
+    FROSEN("Замерз");
+
 
     final String DESCRIPTION;
 

@@ -9,7 +9,7 @@ public class Swamp extends Location {
 
     public Swamp(){
         this.name = "Болото";
-        joinToTheStory();
+        //joinToTheStory();
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Swamp extends Location {
     }
 
     @Override
-    public void surroundingsСhangeStatus(Hero hero) {
+    public void outsideFactorsChangeStatus(Hero hero) {
         hero.setStatus(Status.SCARED);
 
     }
@@ -32,7 +32,7 @@ public class Swamp extends Location {
     @Override
     protected void influenceOnHero(Hero hero) {
         System.out.println("Болото затягивает и пачкает "+hero.getName()+'а');
-        surroundingsСhangeStatus(hero);
+        outsideFactorsChangeStatus(hero);
     }
 
 

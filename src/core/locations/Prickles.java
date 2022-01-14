@@ -8,7 +8,7 @@ public class Prickles extends Location {
 
     public Prickles(){
         this.name = "Колючки";
-        joinToTheStory();
+        //joinToTheStory();
     }
 
     @Override
@@ -21,7 +21,7 @@ public class Prickles extends Location {
     }
 
     @Override
-    public void surroundingsСhangeStatus(Hero hero) {
+    public void outsideFactorsChangeStatus(Hero hero) {
         hero.setStatus(Status.BLEED);
     }
 
@@ -30,7 +30,7 @@ public class Prickles extends Location {
     @Override
     protected void influenceOnHero(Hero hero) {
         System.out.println(hero.getName()+" исцарапал лицо");
-        surroundingsСhangeStatus(hero);
+        outsideFactorsChangeStatus(hero);
     }
 
     @Override

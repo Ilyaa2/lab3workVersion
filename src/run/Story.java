@@ -2,6 +2,7 @@ package run;
 
 import core.*;
 import core.locations.*;
+import utility.FeelingTemperature;
 
 public class Story {
     public static void main(String[] args) {
@@ -10,12 +11,16 @@ public class Story {
         scup.cameTo(new HardGround());
         scup.becomeDistract();
         scup.feelHungry();
-        scup.cameTo(new Swamp());
-        scup.cameTo(new Prickles());
-        scup.cameTo(new SoftGrass());
-        scup.cameTo(new Anthill());
-        Day.end();
+        scup.cameTo(new Swamp(),new Prickles(),new SoftGrass(),new Anthill());
+        /*new Anthill будет иметь переменную для создания муравьев
+        * */
+
+        Sun.TemperatureOfEnvironment temp = new Sun.TemperatureOfEnvironment(FeelingTemperature.NORMAL,(byte) 50);
+        Sun.sunGoesDown(temp);
+        temp.checkTheFeelingTemperature(scup);
         scup.hallucinated();
-        Day.gettingDark();
+        Sun.sunDisappear(temp);
+        temp.checkTheFeelingTemperature(scup);
     }
 }
+

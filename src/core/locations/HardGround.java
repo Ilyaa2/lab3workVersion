@@ -21,7 +21,7 @@ public class HardGround extends Location {
     }
 
     @Override
-    public void surroundingsСhangeStatus(Hero hero) {
+    public void outsideFactorsChangeStatus(Hero hero) {
         hero.setStatus(Status.NORMAL);
     }
 
@@ -30,7 +30,7 @@ public class HardGround extends Location {
     @Override
     protected void influenceOnHero(Hero hero) {
         System.out.println(hero.getName()+" в безопасности");
-        surroundingsСhangeStatus(hero);
+        outsideFactorsChangeStatus(hero);
     }
 
 
